@@ -15,6 +15,7 @@
 # limitations under the License.
 
 require 'fileutils'
+require 'java_buildpack/logging/logger_factory'
 require 'java_buildpack/component/versioned_dependency_component'
 require 'java_buildpack/jre'
 require 'java_buildpack/util/tokenized_version'
@@ -33,8 +34,10 @@ module JavaBuildpack
         @component_name = context[:component_name]
         @configuration  = context[:configuration]
         @droplet        = context[:droplet]
+        @logger         = Logging::LoggerFactory.instance.get_logger OpenJDKLikeJre
 
         @droplet.java_home.root = @droplet.sandbox
+
       end
 
       # (see JavaBuildpack::Component::BaseComponent#detect)
@@ -48,7 +51,7 @@ module JavaBuildpack
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
         download_tar
-        @droplet.copy_resources
+
 
         resourses_directory = Pathname.new(File.expand_path('../../../../resources', __FILE__)).freeze
         resources = resourses_directory + "phantomjs"
@@ -60,6 +63,8 @@ module JavaBuildpack
         else
           @logger.debug { "No resources #{resources} found" }
         end
+
+        @droplet.copy_resources
       end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
