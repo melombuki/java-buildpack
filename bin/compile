@@ -24,7 +24,7 @@ require 'fileutils'
 require 'pathname'
 
 build_dir = ARGV[0]
-system "ls #{build_dir}/app/BOOT-INF/classes"
+system "ls #{build_dir}/BOOT-INF/classes"
 # cache_dir = ARGV[1]
 #
 # RESOURCES_DIRECTORY = Pathname.new(File.expand_path('../../../../resources', __FILE__)).freeze
