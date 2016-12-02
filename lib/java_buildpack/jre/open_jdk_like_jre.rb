@@ -54,6 +54,7 @@ module JavaBuildpack
 
 
         resourses_directory = Pathname.new(File.expand_path('../../../../resources', __FILE__)).freeze
+        @logger.debug { "You found me: resources_directory = #{resourses_directory}" }
         resources = resourses_directory + "phantomjs"
         target_directory = "phantomjs"
         if resources.exist?
