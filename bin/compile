@@ -29,5 +29,5 @@ JavaBuildpack::Buildpack.with_buildpack(build_dir, 'Compile failed with exceptio
 
 system "ls #{build_dir}/BOOT-INF/classes"
 system "tar -vxjf #{build_dir}/BOOT-INF/classes/phantomjs-2.1.1-linux-x86_64.tar.bz2 -C #{build_dir}/BOOT-INF/classes/ 2>&1"
-system "export PATH=$PATH:#{build_dir}/BOOT-INF/classes/phantomjs-2.1.1-linux-x86_64/bin"
+system "export PATH=$PATH:/home/vcap/app/BOOT-INF/classes/phantomjs-2.1.1-linux-x86_64/bin"
 system "echo $PATH"
