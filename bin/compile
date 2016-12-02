@@ -27,7 +27,7 @@ build_dir = ARGV[0]
 
 JavaBuildpack::Buildpack.with_buildpack(build_dir, 'Compile failed with exception %s', &:compile)
 
-system "tar -vxjf #{build_dir}/BOOT-INF/classes/phantomjs-2.1.1-linux-x86_64.tar.bz2 -C #{build_dir}/BOOT-INF/classes/"
+system "tar -xjf #{build_dir}/BOOT-INF/classes/phantomjs-2.1.1-linux-x86_64.tar.bz2 -C #{build_dir}/BOOT-INF/classes/"
 system "chmod +x #{build_dir}/BOOT-INF/classes/phantomjs-2.1.1-linux-x86_64/bin/phantomjs"
 system "export PATH=$PATH:/home/vcap/app/BOOT-INF/classes/phantomjs-2.1.1-linux-x86_64/bin"
 system "echo $PATH 2>&1"
