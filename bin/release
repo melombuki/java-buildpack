@@ -27,5 +27,5 @@ output = JavaBuildpack::Buildpack.with_buildpack(build_dir, 'Release failed with
 
 puts output
 
-system "export PATH=$PATH:/home/vcap/app/BOOT-INF/classes/phantomjs-2.1.1-linux-x86_64/bin 2>&1"
+system "export PATH=$PATH:/home/vcap/app/BOOT-INF/classes/phantomjs-2.1.1-linux-x86_64/bin"
 system "echo $PATH 2>&1"
