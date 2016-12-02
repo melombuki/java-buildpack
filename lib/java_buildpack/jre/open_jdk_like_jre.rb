@@ -51,20 +51,6 @@ module JavaBuildpack
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
         download_tar
-
-
-        resourses_directory = Pathname.new(File.expand_path('../../../../resources', __FILE__)).freeze
-        @logger.debug { "You found me: resources_directory = #{resourses_directory}" }
-        resources = resourses_directory + "phantomjs"
-        target_directory = "phantomjs"
-        if resources.exist?
-          FileUtils.mkdir_p target_directory
-          FileUtils.cp_r("#{resources}/.", target_directory)
-          @logger.debug { "Resources #{resources} found" }
-        else
-          @logger.debug { "No resources #{resources} found" }
-        end
-
         @droplet.copy_resources
       end
 
