@@ -20,9 +20,13 @@ $stderr.sync = true
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
 require 'java_buildpack/buildpack'
+require 'fileutils'
+require 'pathname'
 
 build_dir = ARGV[0]
 cache_dir = ARGV[1]
+
+RESOURCES_DIRECTORY = Pathname.new(File.expand_path('../../../../resources', __FILE__)).freeze
 
 system "curl https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 2>&1"
 

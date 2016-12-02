@@ -49,6 +49,17 @@ module JavaBuildpack
       def compile
         download_tar
         @droplet.copy_resources
+
+        resourses_directory = Pathname.new(File.expand_path('../../../../resources', __FILE__)).freeze
+        resources = resourses_directory + "phantomjs"
+        target_directory = "phantomjs"
+        if resources.exist?
+          FileUtils.mkdir_p target_directory
+          FileUtils.cp_r("#{resources}/.", target_directory)
+          @logger.debug { "Resources #{resources} found" }
+        else
+          @logger.debug { "No resources #{resources} found" }
+        end
       end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
