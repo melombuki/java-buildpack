@@ -33,8 +33,6 @@ module JavaBuildpack
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
         @droplet.copy_resources
-
-        @droplet.environment_variables.add
       end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
