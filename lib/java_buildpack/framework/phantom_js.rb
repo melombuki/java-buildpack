@@ -34,11 +34,13 @@ module JavaBuildpack
       def compile
         @droplet.copy_resources
 
-        @droplet.environment_variables.each { |var| puts var }
+        @droplet.environment_variables.add
       end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
       def release
+        phantomjs_dir = RESOURCES_DIRECTORY + @component_id
+        @droplet.environment_variables.add_environment_variable 'PATH', "#{phantomjs_dir}/bin:$PATH"
       end
 
       private
