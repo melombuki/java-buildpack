@@ -83,7 +83,7 @@ module JavaBuildpack
           classpath,
           main_class,
           arguments,
-          "export PATH=/home/vcap/app/.java-buildpack/phantom_js/phantomjs-2.1.1-linux-x86_64/bin:$PATH"
+          "&& export PATH=/home/vcap/app/.java-buildpack/phantom_js/phantomjs-2.1.1-linux-x86_64/bin:$PATH"
         ].flatten.compact.join(' ')
       end
 
