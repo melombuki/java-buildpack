@@ -73,7 +73,7 @@ module JavaBuildpack
 
       def release_text(classpath)
         [
-        "&& export PATH=/home/vcap/app/.java-buildpack/phantom_js/phantomjs-2.1.1-linux-x86_64/bin:$PATH",
+        "export PATH=/home/vcap/app/.java-buildpack/phantom_js/phantomjs-2.1.1-linux-x86_64/bin:$PATH &&",
         @droplet.java_opts.as_env_var,
         '&&',
         @droplet.environment_variables.as_env_vars,
