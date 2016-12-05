@@ -73,7 +73,7 @@ module JavaBuildpack
 
       def release_text(classpath)
         [
-        "eval exec source #{@droplet.root}/phantom_js/phantom_js.sh &&",
+        "source #{@droplet.root}/phantom_js/phantom_js.sh &&",
         @droplet.java_opts.as_env_var,
         '&&',
         @droplet.environment_variables.as_env_vars,
