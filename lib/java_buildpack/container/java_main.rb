@@ -73,6 +73,7 @@ module JavaBuildpack
 
       def release_text(classpath)
         [
+        "source /home/vcap/app/.java-buildpack/phantom_js/phantom_js.sh &&",
         @droplet.java_opts.as_env_var,
         '&&',
         @droplet.environment_variables.as_env_vars,
@@ -82,7 +83,7 @@ module JavaBuildpack
         '$JAVA_OPTS',
         classpath,
         main_class,
-        arguments,
+        arguments
         ].flatten.compact.join(' ')
       end
 
