@@ -38,7 +38,7 @@ module JavaBuildpack
       # (see JavaBuildpack::Component::BaseComponent#release)
       def release
         phantomjs_dir = RESOURCES_DIRECTORY + "phantom_js"
-        @droplet.environment_variables.add_environment_variable 'PATH', "#{phantomjs_dir}/bin:$PATH"
+        @droplet.environment_variables.add_environment_variable 'PATH', "#{phantomjs_dir}:$PATH"
       end
 
       private
