@@ -23,7 +23,7 @@ module JavaBuildpack
   module Framework
 
     # Encapsulates the functionality for contributing custom Java options to an application.
-    class PhantomJS < JavaBuildpack::Component::ModularComponent
+    class PhantomJS < JavaBuildpack::Component::BaseComponent
 
       # (see JavaBuildpack::Component::BaseComponent#detect)
       def detect
@@ -39,15 +39,7 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#release)
       def release
-        # @droplet.environment_variables.add_environment_variable 'PATH', "/home/vcap/app/.java-buildpack/phantom_js/phantomjs-2.1.1-linux-x86_64/bin:$PATH"
-      end
-
-      def supports?
-        true
-      end
-
-      def sub_components
-
+        @droplet.environment_variables.add_environment_variable 'PATH', "/home/vcap/app/.java-buildpack/phantom_js/phantomjs-2.1.1-linux-x86_64/bin:$PATH"
       end
 
       def command
