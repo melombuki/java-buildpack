@@ -40,7 +40,7 @@ module JavaBuildpack
       # (see JavaBuildpack::Component::BaseComponent#release)
       def release
 
-        @droplet.environment_variables.add_environment_variable 'PATH', "#{phantomjs_dir}/bin:$PATH"
+        @droplet.environment_variables.add_environment_variable 'PATH', "#{@droplet.sandbox}/phantomjs-2.1.1-linux-x86_64/bin:$PATH"
       end
 
     end
