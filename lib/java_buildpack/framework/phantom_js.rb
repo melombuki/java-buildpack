@@ -33,13 +33,14 @@ module JavaBuildpack
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
         @droplet.copy_resources
-        shell "ls #{@droplet.sandbox}"
+        shell "ls #{@droplet.sandbox} 2>&1"
         shell "tar -xjf #{@droplet.sandbox}/phantomjs-2.1.1-linux-x86_64.tar.bz2 -C #{@droplet.sandbox} 2>&1"
       end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
       def release
-        @droplet.environment_variables.add_environment_variable 'PATH', "/home/vcap/app/.java-buildpack/phantom_js/phantomjs-2.1.1-linux-x86_64/bin:$PATH"
+        "&& exec eval export PATH=/home/vcap/app/.java-buildpack/phantom_js/phantomjs-2.1.1-linux-x86_64/bin:$PATH &&"
+        # @droplet.environment_variables.add_environment_variable 'PATH', "/home/vcap/app/.java-buildpack/phantom_js/phantomjs-2.1.1-linux-x86_64/bin:$PATH"
       end
 
     end
