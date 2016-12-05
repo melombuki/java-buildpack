@@ -32,7 +32,7 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
-        copy_resources
+        @droplet.copy_resources
       end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
