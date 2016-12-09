@@ -27,13 +27,12 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#detect)
       def detect
-        "phantom_js"
+        enabled? ? "phantom_js" : nil
       end
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
         @droplet.copy_resources
-        shell "ls #{@droplet.sandbox} 2>&1"
         shell "tar -xjf #{@droplet.sandbox}/phantomjs-2.1.1-linux-x86_64.tar.bz2 -C #{@droplet.sandbox} 2>&1"
       end
 
